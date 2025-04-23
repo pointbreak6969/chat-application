@@ -1,103 +1,87 @@
-import Image from "next/image";
+"use client"
+import React from 'react'
+import ChatList from '@/components/Chatlist'
+import { format, isYesterday, isToday } from 'date-fns';
 
-export default function Home() {
+const page = () => {
+  // Helper function to format dates intelligently
+  // const formatChatDate = (date: Date) => {
+  //   if (isToday(date)) {
+  //     return format(date, 'h:mm a');
+  //   } else if (isYesterday(date)) {
+  //     return 'Yesterday';
+  //   } else {
+  //     return format(date, 'M/d/yy');
+  //   }
+  // };
+
+  // const mockChats = [
+  //   {
+  //     id: "1",
+  //     name: "Alex Johnson",
+  //     lastMessage: "Hey, are we still meeting tomorrow?",
+  //     timestamp: formatChatDate(new Date(2025, 3, 16, 14, 32)),
+  //     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  //     unreadCount: 3
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Sarah Williams",
+  //     lastMessage: "I sent you the project files",
+  //     timestamp: formatChatDate(new Date(2025, 3, 16, 11, 15)),
+  //     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  //     unreadCount: 1
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Team Discussion",
+  //     lastMessage: "Mike: Let's finalize the proposal by Friday",
+  //     timestamp: formatChatDate(new Date(2025, 3, 15, 18, 22)),
+  //     avatar: "https://ui-avatars.com/api/?name=Team+Discussion&background=random"
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "James Wilson",
+  //     lastMessage: "Thanks for your help!",
+  //     timestamp: formatChatDate(new Date(2025, 3, 15, 9, 10)),
+  //     avatar: "https://randomuser.me/api/portraits/men/46.jpg"
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "Emily Parker",
+  //     lastMessage: "Can you send me the link to the meeting?",
+  //     timestamp: formatChatDate(new Date(2025, 3, 14, 16, 45)),
+  //     avatar: "https://randomuser.me/api/portraits/women/33.jpg",
+  //     unreadCount: 2
+  //   },
+  //   {
+  //     id: "6",
+  //     name: "David Thompson",
+  //     lastMessage: "I'll be there in 10 minutes",
+  //     timestamp: formatChatDate(new Date(2025, 3, 13, 12, 30)),
+  //     avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+  //   },
+  //   {
+  //     id: "7",
+  //     name: "Marketing Team",
+  //     lastMessage: "Lisa: Here's the updated campaign schedule",
+  //     timestamp: formatChatDate(new Date(2025, 3, 12, 15, 0)),
+  //     avatar: "https://ui-avatars.com/api/?name=Marketing+Team&background=random"
+  //   },
+  //   {
+  //     id: "8",
+  //     name: "Tech Support",
+  //     lastMessage: "Your ticket #4587 has been resolved",
+  //     timestamp: formatChatDate(new Date(2025, 3, 10, 9, 15)),
+  //     avatar: "https://ui-avatars.com/api/?name=Tech+Support&background=0D8ABC&color=fff"
+  //   }
+  // ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div>page
+      
     </div>
-  );
+  )
 }
+
+export default page
